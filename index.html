@@ -3,123 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تسجيل الدخول</title>
+<title>واجهة أنيميشن رهيبة</title>
 <style>
-body {
+body, html {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(120deg,#000,#111);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-/* ---- صفحة الدخول ---- */
-.login-box {
-  background: #111;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #0ff;
-  text-align: center;
-  animation: fade 1s;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 15px 0;
-  border: none;
-  border-radius: 8px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #0ff;
-  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
   cursor: pointer;
 }
 
-#error {
-  color: red;
+/* نيون متحرك */
+@keyframes neon {
+  0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; }
+  50% { text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0, 0 0 60px #ff0; }
 }
 
-/* ---- الصفحة السرية ---- */
-.secret-content {
-  display: none;
-  flex-direction: column;
-  align-items: center;
+h1 {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+  color: #0ff;
+  font-size: 3em;
+  animation: neon 2s infinite alternate;
 }
 
-.glow {
-  animation: glow 2s infinite alternate;
+/* قلوب تظهر عند اللمس */
+.heart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: floatUp 1s ease-out forwards;
 }
 
-.cards {
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
 }
 
-.card {
-  padding: 30px;
-  background: #111;
-  border-radius: 15px;
-  box-shadow: 0 0 15px #0ff;
-  animation: float 3s infinite ease-in-out;
+.heart::before { top: -15px; left: 0; }
+.heart::after { left: 15px; top: 0; }
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateY(0) rotate(-45deg) scale(1); }
+  100% { opacity: 0; transform: translateY(-100px) rotate(-45deg) scale(1.5); }
 }
 
-/* ---- أنيميشن ---- */
-@keyframes glow {
-  from { text-shadow: 0 0 10px #0ff; }
-  to { text-shadow: 0 0 30px #0ff; }
+/* نجوم متوهجة تتحرك */
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: blink 2s infinite alternate;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes blink {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
 }
 </style>
 </head>
 <body>
 
-<!-- صفحة الدخول -->
-<div class="login-box" id="loginBox">
-  <h1>ادخل الباسورد</h1>
-  <input type="password" id="password" placeholder="الباسورد">
-  <button onclick="check()">دخول</button>
-  <p id="error"></p>
-</div>
-
-<!-- الصفحة السرية -->
-<div class="secret-content" id="secretContent">
-  <h1 class="glow">أهلاً بيك في المنطقة السرية</h1>
-  <div class="cards">
-    <div class="card">🔥 أنيميشن</div>
-    <div class="card">⚡ تأثيرات</div>
-    <div class="card">🚀 شغل تقيل</div>
-  </div>
-</div>
+<h1>مرحبا بك في الصفحة السحرية ✨</h1>
 
 <script>
-function check() {
-  const pass = document.getElementById("password").value;
-  if(pass === "sara") {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("secretContent").style.display = "flex";
-  } else {
-    document.getElementById("error").innerText = "باسورد غلط يا نجم";
-  }
+// إنشاء نجوم متوهجة
+for(let i=0;i<100;i++){
+  let star = document.createElement('div');
+  star.classList.add('star');
+  let size = Math.random()*3+1;
+  star.style.width = size+'px';
+  star.style.height = size+'px';
+  star.style.top = Math.random()*window.innerHeight+'px';
+  star.style.left = Math.random()*window.innerWidth+'px';
+  star.style.animationDuration = (Math.random()*2+1)+'s';
+  document.body.appendChild(star);
 }
+
+// ظهور قلب عند اللمس
+document.body.addEventListener('click', function(e){
+  let heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = (e.clientX - 15) + 'px';
+  heart.style.top = (e.clientY - 15) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1000);
+});
 </script>
 
 </body>
