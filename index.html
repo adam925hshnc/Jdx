@@ -136,4 +136,36 @@ function showCourse(name) {
 </script>
 
 </body>
+</html>  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg","https://www.youtube.com/embed/qz0aGYrrlhU","https://www.youtube.com/embed/UB1O30fR-EE"],
+  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c","https://www.youtube.com/embed/PoRJizFvM7s","https://www.youtube.com/embed/Oe421EPjeBE"],
+  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0","https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/8mAITcNt710"],
+  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710","https://www.youtube.com/embed/Z1Yd7upQsXY"],
+  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/O6P86uwfdR0"],
+  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY","https://www.youtube.com/embed/mz-5yFfZ9g4","https://www.youtube.com/embed/H6T7XUCMwZk"],
+  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY","https://www.youtube.com/embed/7Zbtiid6iXI","https://www.youtube.com/embed/5I7o9eXwR0k"],
+  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4","https://www.youtube.com/embed/T1y0d3N6M0E","https://www.youtube.com/embed/7MRonzqYJgw"],
+  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg","https://www.youtube.com/embed/4v0mDLN2Pq0","https://www.youtube.com/embed/xp6hL2DcxKI"],
+  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ","https://www.youtube.com/embed/BVqQJYJXJuc"],
+  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU","https://www.youtube.com/embed/1Rdx02D0sAc"],
+  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"], // مثال، ممكن تبدله برابط صحيح
+  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"] // مثال، ممكن تبدله برابط صحيح
+};
+
+function showCourse(name) {
+  const videoContainer = document.getElementById("videoContainer");
+  videoContainer.innerHTML = "";
+  const videos = courses[name];
+  videos.forEach(url => {
+    const iframe = document.createElement("iframe");
+    iframe.src = url + "?autoplay=0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    videoContainer.appendChild(iframe);
+  });
+  videoContainer.style.display = "flex";
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+</script>
+
+</body>
 </html>
