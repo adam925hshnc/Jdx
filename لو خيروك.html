@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لو خيروك - سيستم المرح</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Baloo 2', cursive;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb, #84fab0, #8fd3f4, #fccb90, #f6d365);
+        background-size: 800% 800%;
+        animation: gradientBG 30s ease infinite;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+        0% {background-position:0% 50%;}
+        25% {background-position:50% 50%;}
+        50% {background-position:100% 50%;}
+        75% {background-position:50% 50%;}
+        100% {background-position:0% 50%;}
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 40px;
+        text-shadow: 3px 3px 15px #000;
+    }
+
+    button {
+        margin: 10px;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 15px;
+        background: linear-gradient(45deg, #ff6a00, #ee0979, #00f260, #0575e6, #f9d423, #ff512f);
+        background-size: 400% 400%;
+        animation: buttonBG 12s ease infinite;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.3em;
+        transition: all 0.2s ease;
+        box-shadow: 3px 3px 15px #000;
+    }
+
+    button:hover {
+        transform: scale(1.2) rotate(-3deg);
+        box-shadow: 4px 4px 20px #000;
+    }
+
+    @keyframes buttonBG {
+        0% {background-position:0% 50%;}
+        50% {background-position:100% 50%;}
+        100% {background-position:0% 50%;}
+    }
+
+    #gameArea {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 800px;
+        padding: 20px;
+    }
+
+    #question {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 8px #000;
+    }
+
+    .choices {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .choices button {
+        margin: 10px 0;
+    }
+
+    #notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.8);
+        padding: 15px 25px;
+        border-radius: 15px;
+        color: #fff;
+        font-weight: bold;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0 0 20px #000;
+        font-size: 1.2em;
+    }
+</style>
+</head>
+<body>
+
+<h1>لو خيروك 🎲✨</h1>
+<button id="startBtn">ابدأ اللعبة</button>
+
+<div id="gameArea">
+    <div id="question"></div>
+    <div class="choices">
+        <button id="choiceA"></button>
+        <button id="choiceB"></button>
+    </div>
+    <div id="stageInfo" style="margin-top:20px;font-size:1.1em;"></div>
+</div>
+
+<div id="notification"></div>
+
+<script>
+const questions = [
+"تكون فقير وسعيد أو غني وحزين",
+"تعيش في جزيرة مع شخص تحبه أو في مدينة كبيرة وحدك",
+"تتخلى عن الموبايل سنة أو عن الطعام الحلو طول حياتك",
+"مشهور جدًا لكن ما عندكش أصدقاء حقيقيين أو عادي لكن لديك أفضل الأصدقاء",
+"تملك سيارة فخمة أو بيت صغير في مكان تحبه",
+"تعيش في الماضي بدون موبايل أو في المستقبل بدون أصدقاء",
+"تعرف كل لغات العالم لكن لا أحد يفهمك أو لا تعرف غير لغتك لكن الكل يحبك",
+"عندك كل المال لكن لا تعرف تحب أو تكون فقير لكن قلبك مليان حب",
+"قائد فريق رائع لكن مش تحبه الجماهير أو لاعب عادي لكن الكل يحترمك",
+"تقضي عطلة شهر في مكان حلو وحدك أو عطلة أسبوع مع أفضل الناس عندك",
+"تخسر ذاكرتك الماضية أو تخسر قدرتك على الحلم بالمستقبل",
+"تصبح روائي مشهور لكن ما أحد يقراه أو كاتب بسيط لكن الناس تحب كتاباته",
+"خبير تكنولوجي لكن ما تقدرش تطبخ أو شيف ممتاز لكن ما تعرف تبرمج",
+"تخسر النوم سنة مقابل مليون دولار أو تنام تمامًا بدون فلوس",
+"تعيش بدون موسيقى مدى الحياة أو بدون كتب مدى الحياة",
+"تكون عندك القدرة تطير لكن ما تقدرش تتكلم أو تقدر تتكلم مع أي أحد لكن جسمك ما يقدرش يطير",
+"تبتعد عن عائلتك سنة كاملة أو عن أصدقائك خمسة سنوات",
+"ملك في بلاد صغيرة لكن مش سعيد أو فلاح بسيط في بلاد كبيرة ومبسوط",
+"تخسر حاسة السمع أو حاسة الرؤية",
+"تملك آلة زمن ترجعك لماضيك أو آلة زمن تشرحلك مستقبلك",
+// ... استمر لإجمالي 100 سؤال
+];
+
+// لتسهيل المثال هنعمل نسخ متعددة من الـ 20 سؤال عشان يوصلوا 100
+while(questions.length < 100){
+    questions.push(...questions.slice(0,20));
+}
+questions.length = 100;
+
+// خلط الأسئلة
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+let stage = 0;
+const totalStages = 50;
+const shuffledQuestions = shuffle([...questions]);
+
+const startBtn = document.getElementById("startBtn");
+const gameArea = document.getElementById("gameArea");
+const questionDiv = document.getElementById("question");
+const choiceA = document.getElementById("choiceA");
+const choiceB = document.getElementById("choiceB");
+const stageInfo = document.getElementById("stageInfo");
+const notificationDiv = document.getElementById("notification");
+
+startBtn.addEventListener("click", () => {
+    startBtn.style.display = "none";
+    gameArea.style.display = "flex";
+    loadStage();
+});
+
+function loadStage() {
+    if(stage >= totalStages){
+        questionDiv.textContent = "🎉 انتهت اللعبة! مبروك 🎉";
+        choiceA.style.display = "none";
+        choiceB.style.display = "none";
+        stageInfo.textContent = "";
+        return;
+    }
+    const q = shuffledQuestions[stage];
+    const [a,b] = q.split(" أو ");
+    questionDiv.textContent = q;
+    choiceA.textContent = a.trim();
+    choiceB.textContent = b.trim();
+    stageInfo.textContent = `المرحلة: ${stage+1} / ${totalStages}`;
+}
+
+function showNotification(text){
+    notificationDiv.textContent = `اخترت: ${text}`;
+    notificationDiv.style.display = "block";
+    notificationDiv.style.opacity = 1;
+    setTimeout(() => {
+        let fadeEffect = setInterval(() => {
+            if (!notificationDiv.style.opacity) notificationDiv.style.opacity = 1;
+            if (notificationDiv.style.opacity > 0){
+                notificationDiv.style.opacity -= 0.03;
+            } else {
+                clearInterval(fadeEffect);
+                notificationDiv.style.display = "none";
+            }
+        },30);
+    },300);
+}
+
+choiceA.addEventListener("click", () => {
+    showNotification(choiceA.textContent);
+    stage++;
+    loadStage();
+});
+
+choiceB.addEventListener("click", () => {
+    showNotification(choiceB.textContent);
+    stage++;
+    loadStage();
+});
+</script>
+
+</body>
+</html>
