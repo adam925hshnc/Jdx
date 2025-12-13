@@ -3,68 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>هديه</title>
+<title>موقع كورسات آدم</title>
 <style>
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#1e3c72,#2a5298);
+  background: linear-gradient(120deg,#0f0c29,#302b63,#24243e);
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 h1 {
+  margin: 20px 0;
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2em;
+  font-size: 2.2em;
+  text-shadow: 0 0 10px #0ff;
 }
 
-button {
-  padding: 15px 30px;
-  font-size: 1.4em;
+.courses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+button.course-btn {
+  padding: 10px 20px;
+  font-size: 1em;
   border: none;
-  background: #ff4757;
-  color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
+  background: #ff6f61;
+  color: white;
   transition: 0.3s;
 }
 
-button:hover {
+button.course-btn:hover {
   transform: scale(1.1);
-  background: #ff6b81;
+  background: #ff4757;
 }
 
-#videoFrame {
-  margin-top: 30px;
+#videoContainer {
   width: 90%;
-  max-width: 560px;
-  height: 315px;
-  border: none;
+  max-width: 800px;
+  margin-bottom: 30px;
   display: none;
+}
+
+iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 8px;
+}
+
+footer {
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  background: #111;
+  width: 100%;
+  box-shadow: 0 -2px 10px #0ff;
 }
 </style>
 </head>
 <body>
 
-<h1>اضغط الزر و أكسب لمبوركيني</h1>
-<button onclick="showVideo()">اكسب الامبوركيني</button>
+<h1>موقع كورسات آدم</h1>
 
-<!-- هنا الهديه -->
-<iframe id="videoFrame"
- src="https://www.youtube.com/embed/2cSrvQ-NBvw?autoplay=1&rel=0"
- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
- allowfullscreen>
-</iframe>
+<div class="courses">
+  <button class="course-btn" onclick="showCourse('C++')">C++</button>
+  <button class="course-btn" onclick="showCourse('CSS')">CSS</button>
+  <button class="course-btn" onclick="showCourse('HTML')">HTML</button>
+  <button class="course-btn" onclick="showCourse('JavaScript')">JavaScript</button>
+  <button class="course-btn" onclick="showCourse('تعلم البرمجة')">تعلم البرمجة</button>
+  <button class="course-btn" onclick="showCourse('مفهوم البرمجة')">مفهوم البرمجة</button>
+  <button class="course-btn" onclick="showCourse('ماهي البرمجة')">ماهي البرمجة</button>
+  <button class="course-btn" onclick="showCourse('الأمن السيبراني')">الأمن السيبراني</button>
+  <button class="course-btn" onclick="showCourse('الهكر الأخلاقي')">دورة الهكر الأخلاقي</button>
+  <button class="course-btn" onclick="showCourse('Blender')">كورسات البليندر</button>
+  <button class="course-btn" onclick="showCourse('مونتاج')">كورسات المونتاج</button>
+</div>
+
+<div id="videoContainer">
+  <iframe id="courseVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<footer>تم صنع هذا الموقع بواسطة آدم رامي</footer>
 
 <script>
-function showVideo() {
-  document.getElementById("videoFrame").style.display = "block";
+const courses = {
+  "C++": "https://www.youtube.com/embed/vLnPwxZdW4Y",
+  "CSS": "https://www.youtube.com/embed/yfoY53QXEnI",
+  "HTML": "https://www.youtube.com/embed/pQN-pnXPaVg",
+  "JavaScript": "https://www.youtube.com/embed/hdI2bqOjy3c",
+  "تعلم البرمجة": "https://www.youtube.com/embed/O6P86uwfdR0",
+  "مفهوم البرمجة": "https://www.youtube.com/embed/8mAITcNt710",
+  "ماهي البرمجة": "https://www.youtube.com/embed/Z1Yd7upQsXY",
+  "الأمن السيبراني": "https://www.youtube.com/embed/1Q8fG0TtVAY",
+  "الهكر الأخلاقي": "https://www.youtube.com/embed/fZbUZhJv8nY",
+  "Blender": "https://www.youtube.com/embed/TPrnSACiTJ4",
+  "مونتاج": "https://www.youtube.com/embed/5XkLy_9lQXg"
+};
+
+function showCourse(name) {
+  const video = courses[name];
+  document.getElementById("courseVideo").src = video + "?autoplay=1";
+  document.getElementById("videoContainer").style.display = "block";
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 </script>
 
