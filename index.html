@@ -3,97 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>موقع كورسات آدم النهائي</title>
+<title>موقع كورسات آدم الكبير</title>
 <style>
-body {
+/* عام */
+body, html {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color: white;
+  overflow-x: hidden;
+  background: linear-gradient(270deg,#8fd3f4,#84fab0,#8fd3f4);
+  background-size: 600% 600%;
+  animation: GradientBG 20s ease infinite;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
 }
 
+/* عنوان الموقع */
 h1 {
-  margin: 20px 0;
+  margin: 30px 0;
   text-align: center;
-  font-size: 2em;
-  text-shadow: 0 0 10px #0ff;
+  font-size: 2.5em;
+  text-shadow: 0 0 15px #0ff;
 }
 
+/* حركة الخلفية */
+@keyframes GradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* أزرار الكورسات */
 .courses {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 button.course-btn {
-  padding: 10px 20px;
-  font-size: 1em;
+  padding: 15px 25px;
+  font-size: 1.1em;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   background: linear-gradient(45deg,#ff6f61,#ff9a9e);
-  color: white;
-  transition: 0.3s;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: 0.4s;
 }
 
 button.course-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   background: linear-gradient(45deg,#ff4757,#ff7b91);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
+/* حاوية الفيديو */
 #videoContainer {
   width: 90%;
   max-width: 900px;
-  margin-bottom: 30px;
   display: none;
-  flex-direction: column;
-  gap: 20px;
+  margin-bottom: 40px;
+  justify-content: center;
   align-items: center;
 }
 
 iframe {
   width: 100%;
-  height: 450px;
+  height: 500px;
+  border-radius: 12px;
   border: none;
-  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transition: 0.5s;
 }
 
+/* فوتر */
 footer {
   padding: 15px;
   text-align: center;
   font-size: 0.9em;
   background: #111;
   width: 100%;
-  box-shadow: 0 -2px 10px #0ff;
+  box-shadow: 0 -2px 15px rgba(0,255,255,0.3);
+}
+
+/* تأثير ظهور الفيديو */
+#videoContainer.show iframe {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0; transform: scale(0.9);}
+  100% {opacity: 1; transform: scale(1);}
 }
 </style>
 </head>
 <body>
 
-<h1>موقع كورسات آدم النهائي</h1>
+<h1>موقع كورسات آدم الكبير</h1>
 
 <div class="courses">
-  <button class="course-btn" onclick="showCourse('C++')">C++</button>
-  <button class="course-btn" onclick="showCourse('CSS')">CSS</button>
-  <button class="course-btn" onclick="showCourse('HTML')">HTML</button>
-  <button class="course-btn" onclick="showCourse('JavaScript')">JavaScript</button>
+  <button class="course-btn" onclick="showCourse('C++')">كورسات C++</button>
+  <button class="course-btn" onclick="showCourse('CSS')">كورسات CSS</button>
+  <button class="course-btn" onclick="showCourse('HTML')">كورسات HTML</button>
+  <button class="course-btn" onclick="showCourse('JavaScript')">كورسات JavaScript</button>
   <button class="course-btn" onclick="showCourse('تعلم البرمجة')">تعلم البرمجة</button>
   <button class="course-btn" onclick="showCourse('مفهوم البرمجة')">مفهوم البرمجة</button>
   <button class="course-btn" onclick="showCourse('ماهي البرمجة')">ماهي البرمجة</button>
   <button class="course-btn" onclick="showCourse('الأمن السيبراني')">الأمن السيبراني</button>
   <button class="course-btn" onclick="showCourse('الهكر الأخلاقي')">الهكر الأخلاقي</button>
-  <button class="course-btn" onclick="showCourse('Blender')">Blender</button>
-  <button class="course-btn" onclick="showCourse('مونتاج')">مونتاج</button>
-  <button class="course-btn" onclick="showCourse('كالي لينكس')">كالي لينكس</button>
+  <button class="course-btn" onclick="showCourse('Blender')">كورسات Blender</button>
+  <button class="course-btn" onclick="showCourse('مونتاج')">كورسات مونتاج</button>
+  <button class="course-btn" onclick="showCourse('كالي لينكس')">كورسات كالي لينكس</button>
   <button class="course-btn" onclick="showCourse('مالتيجو')">أداة مالتيجو</button>
   <button class="course-btn" onclick="showCourse('ويفتتح')">أداة ويفتتح</button>
   <button class="course-btn" onclick="showCourse('تيرمينال')">ماهو التيرمينال</button>
+  <button class="course-btn" onclick="showCourse('شبكات')">تعلم الشبكات</button>
+  <button class="course-btn" onclick="showCourse('أوفيس')">كورسات أوفيس</button>
+  <button class="course-btn" onclick="showCourse('أنيميشن')">كورسات أنيميشن</button>
+  <button class="course-btn" onclick="showCourse('تصميم')">كورسات تصميم</button>
+  <button class="course-btn" onclick="showCourse('فيديو')">كورسات فيديو</button>
 </div>
 
 <div id="videoContainer"></div>
@@ -102,67 +136,39 @@ footer {
 
 <script>
 const courses = {
-  "C++": ["https://www.youtube.com/embed/vLnPwxZdW4Y","https://www.youtube.com/embed/mUQZ1qmKlLY","https://www.youtube.com/embed/18c3MTX0PK0"],
-  "CSS": ["https://www.youtube.com/embed/yfoY53QXEnI","https://www.youtube.com/embed/1Rs2ND1ryYc","https://www.youtube.com/embed/1PnVor36_40"],
-  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg","https://www.youtube.com/embed/qz0aGYrrlhU","https://www.youtube.com/embed/UB1O30fR-EE"],
-  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c","https://www.youtube.com/embed/PoRJizFvM7s","https://www.youtube.com/embed/Oe421EPjeBE"],
-  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0","https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/8mAITcNt710"],
-  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710","https://www.youtube.com/embed/Z1Yd7upQsXY"],
-  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/O6P86uwfdR0"],
-  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY","https://www.youtube.com/embed/mz-5yFfZ9g4","https://www.youtube.com/embed/H6T7XUCMwZk"],
-  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY","https://www.youtube.com/embed/7Zbtiid6iXI","https://www.youtube.com/embed/5I7o9eXwR0k"],
-  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4","https://www.youtube.com/embed/T1y0d3N6M0E","https://www.youtube.com/embed/7MRonzqYJgw"],
-  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg","https://www.youtube.com/embed/4v0mDLN2Pq0","https://www.youtube.com/embed/xp6hL2DcxKI"],
-  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ","https://www.youtube.com/embed/BVqQJYJXJuc"],
-  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU","https://www.youtube.com/embed/1Rdx02D0sAc"],
-  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"], // مثال، ممكن تبدله برابط صحيح
-  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"] // مثال، ممكن تبدله برابط صحيح
+  "C++": ["https://www.youtube.com/embed/vLnPwxZdW4Y"],
+  "CSS": ["https://www.youtube.com/embed/yfoY53QXEnI"],
+  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg"],
+  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c"],
+  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0"],
+  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710"],
+  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY"],
+  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY"],
+  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY"],
+  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4"],
+  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg"],
+  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ"],
+  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU"],
+  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"],
+  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"],
+  "شبكات": ["https://www.youtube.com/embed/abc12345"],
+  "أوفيس": ["https://www.youtube.com/embed/def67890"],
+  "أنيميشن": ["https://www.youtube.com/embed/ghi23456"],
+  "تصميم": ["https://www.youtube.com/embed/jkl34567"],
+  "فيديو": ["https://www.youtube.com/embed/mno45678"]
 };
 
 function showCourse(name) {
   const videoContainer = document.getElementById("videoContainer");
   videoContainer.innerHTML = "";
-  const videos = courses[name];
-  videos.forEach(url => {
-    const iframe = document.createElement("iframe");
-    iframe.src = url + "?autoplay=0";
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
-    videoContainer.appendChild(iframe);
-  });
+  const videoUrl = courses[name][0]; // فيديو واحد فقط لكل كورس
+  const iframe = document.createElement("iframe");
+  iframe.src = videoUrl + "?autoplay=1";
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+  iframe.allowFullscreen = true;
+  videoContainer.appendChild(iframe);
   videoContainer.style.display = "flex";
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-}
-</script>
-
-</body>
-</html>  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg","https://www.youtube.com/embed/qz0aGYrrlhU","https://www.youtube.com/embed/UB1O30fR-EE"],
-  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c","https://www.youtube.com/embed/PoRJizFvM7s","https://www.youtube.com/embed/Oe421EPjeBE"],
-  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0","https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/8mAITcNt710"],
-  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710","https://www.youtube.com/embed/Z1Yd7upQsXY"],
-  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/O6P86uwfdR0"],
-  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY","https://www.youtube.com/embed/mz-5yFfZ9g4","https://www.youtube.com/embed/H6T7XUCMwZk"],
-  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY","https://www.youtube.com/embed/7Zbtiid6iXI","https://www.youtube.com/embed/5I7o9eXwR0k"],
-  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4","https://www.youtube.com/embed/T1y0d3N6M0E","https://www.youtube.com/embed/7MRonzqYJgw"],
-  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg","https://www.youtube.com/embed/4v0mDLN2Pq0","https://www.youtube.com/embed/xp6hL2DcxKI"],
-  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ","https://www.youtube.com/embed/BVqQJYJXJuc"],
-  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU","https://www.youtube.com/embed/1Rdx02D0sAc"],
-  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"], // مثال، ممكن تبدله برابط صحيح
-  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"] // مثال، ممكن تبدله برابط صحيح
-};
-
-function showCourse(name) {
-  const videoContainer = document.getElementById("videoContainer");
-  videoContainer.innerHTML = "";
-  const videos = courses[name];
-  videos.forEach(url => {
-    const iframe = document.createElement("iframe");
-    iframe.src = url + "?autoplay=0";
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
-    videoContainer.appendChild(iframe);
-  });
-  videoContainer.style.display = "flex";
+  videoContainer.classList.add("show");
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 </script>
