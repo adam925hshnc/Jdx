@@ -3,105 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>واجهة أنيميشن رهيبة</title>
+<title>فيديو مضحك</title>
 <style>
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+}
+
+button {
+  padding: 20px 40px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 12px;
+  background: #ff6f61;
+  color: white;
   cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
 
-/* نيون متحرك */
-@keyframes neon {
-  0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; }
-  50% { text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0, 0 0 60px #ff0; }
+button:hover {
+  transform: scale(1.1);
 }
 
-h1 {
-  position: absolute;
-  top: 20%;
-  width: 100%;
-  text-align: center;
-  color: #0ff;
-  font-size: 3em;
-  animation: neon 2s infinite alternate;
-}
-
-/* قلوب تظهر عند اللمس */
-.heart {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: red;
-  transform: rotate(-45deg);
-  animation: floatUp 1s ease-out forwards;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: red;
-  border-radius: 50%;
-}
-
-.heart::before { top: -15px; left: 0; }
-.heart::after { left: 15px; top: 0; }
-
-@keyframes floatUp {
-  0% { opacity: 1; transform: translateY(0) rotate(-45deg) scale(1); }
-  100% { opacity: 0; transform: translateY(-100px) rotate(-45deg) scale(1.5); }
-}
-
-/* نجوم متوهجة تتحرك */
-.star {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: blink 2s infinite alternate;
-}
-
-@keyframes blink {
-  0% { opacity: 0.2; }
-  50% { opacity: 1; }
-  100% { opacity: 0.2; }
+#videoContainer {
+  margin-top: 30px;
+  display: none;
 }
 </style>
 </head>
 <body>
 
-<h1>مرحبا بك في الصفحة السحرية ✨</h1>
+<h1>اضغط على الزر وشوف الفيديو المضحك 😂</h1>
+<button onclick="showVideo()">اضغط هنا</button>
+
+<div id="videoContainer">
+  <video width="560" height="315" controls autoplay>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    المتصفح لا يدعم عرض الفيديو
+  </video>
+</div>
 
 <script>
-// إنشاء نجوم متوهجة
-for(let i=0;i<100;i++){
-  let star = document.createElement('div');
-  star.classList.add('star');
-  let size = Math.random()*3+1;
-  star.style.width = size+'px';
-  star.style.height = size+'px';
-  star.style.top = Math.random()*window.innerHeight+'px';
-  star.style.left = Math.random()*window.innerWidth+'px';
-  star.style.animationDuration = (Math.random()*2+1)+'s';
-  document.body.appendChild(star);
+function showVideo() {
+  document.getElementById('videoContainer').style.display = 'block';
 }
-
-// ظهور قلب عند اللمس
-document.body.addEventListener('click', function(e){
-  let heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.style.left = (e.clientX - 15) + 'px';
-  heart.style.top = (e.clientY - 15) + 'px';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 1000);
-});
 </script>
 
 </body>
