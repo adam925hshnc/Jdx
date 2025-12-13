@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>موقع كورسات آدم</title>
+<title>موقع كورسات آدم النهائي</title>
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(120deg,#0f0c29,#302b63,#24243e);
+  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color: white;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ body {
 h1 {
   margin: 20px 0;
   text-align: center;
-  font-size: 2.2em;
+  font-size: 2em;
   text-shadow: 0 0 10px #0ff;
 }
 
@@ -27,7 +27,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 30px;
 }
 
@@ -37,21 +37,24 @@ button.course-btn {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background: #ff6f61;
+  background: linear-gradient(45deg,#ff6f61,#ff9a9e);
   color: white;
   transition: 0.3s;
 }
 
 button.course-btn:hover {
-  transform: scale(1.1);
-  background: #ff4757;
+  transform: scale(1.05);
+  background: linear-gradient(45deg,#ff4757,#ff7b91);
 }
 
 #videoContainer {
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   margin-bottom: 30px;
   display: none;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 
 iframe {
@@ -73,7 +76,7 @@ footer {
 </head>
 <body>
 
-<h1>موقع كورسات آدم</h1>
+<h1>موقع كورسات آدم النهائي</h1>
 
 <div class="courses">
   <button class="course-btn" onclick="showCourse('C++')">C++</button>
@@ -84,36 +87,50 @@ footer {
   <button class="course-btn" onclick="showCourse('مفهوم البرمجة')">مفهوم البرمجة</button>
   <button class="course-btn" onclick="showCourse('ماهي البرمجة')">ماهي البرمجة</button>
   <button class="course-btn" onclick="showCourse('الأمن السيبراني')">الأمن السيبراني</button>
-  <button class="course-btn" onclick="showCourse('الهكر الأخلاقي')">دورة الهكر الأخلاقي</button>
-  <button class="course-btn" onclick="showCourse('Blender')">كورسات البليندر</button>
-  <button class="course-btn" onclick="showCourse('مونتاج')">كورسات المونتاج</button>
+  <button class="course-btn" onclick="showCourse('الهكر الأخلاقي')">الهكر الأخلاقي</button>
+  <button class="course-btn" onclick="showCourse('Blender')">Blender</button>
+  <button class="course-btn" onclick="showCourse('مونتاج')">مونتاج</button>
+  <button class="course-btn" onclick="showCourse('كالي لينكس')">كالي لينكس</button>
+  <button class="course-btn" onclick="showCourse('مالتيجو')">أداة مالتيجو</button>
+  <button class="course-btn" onclick="showCourse('ويفتتح')">أداة ويفتتح</button>
+  <button class="course-btn" onclick="showCourse('تيرمينال')">ماهو التيرمينال</button>
 </div>
 
-<div id="videoContainer">
-  <iframe id="courseVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div id="videoContainer"></div>
 
 <footer>تم صنع هذا الموقع بواسطة آدم رامي</footer>
 
 <script>
 const courses = {
-  "C++": "https://www.youtube.com/embed/vLnPwxZdW4Y",
-  "CSS": "https://www.youtube.com/embed/yfoY53QXEnI",
-  "HTML": "https://www.youtube.com/embed/pQN-pnXPaVg",
-  "JavaScript": "https://www.youtube.com/embed/hdI2bqOjy3c",
-  "تعلم البرمجة": "https://www.youtube.com/embed/O6P86uwfdR0",
-  "مفهوم البرمجة": "https://www.youtube.com/embed/8mAITcNt710",
-  "ماهي البرمجة": "https://www.youtube.com/embed/Z1Yd7upQsXY",
-  "الأمن السيبراني": "https://www.youtube.com/embed/1Q8fG0TtVAY",
-  "الهكر الأخلاقي": "https://www.youtube.com/embed/fZbUZhJv8nY",
-  "Blender": "https://www.youtube.com/embed/TPrnSACiTJ4",
-  "مونتاج": "https://www.youtube.com/embed/5XkLy_9lQXg"
+  "C++": ["https://www.youtube.com/embed/vLnPwxZdW4Y","https://www.youtube.com/embed/mUQZ1qmKlLY","https://www.youtube.com/embed/18c3MTX0PK0"],
+  "CSS": ["https://www.youtube.com/embed/yfoY53QXEnI","https://www.youtube.com/embed/1Rs2ND1ryYc","https://www.youtube.com/embed/1PnVor36_40"],
+  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg","https://www.youtube.com/embed/qz0aGYrrlhU","https://www.youtube.com/embed/UB1O30fR-EE"],
+  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c","https://www.youtube.com/embed/PoRJizFvM7s","https://www.youtube.com/embed/Oe421EPjeBE"],
+  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0","https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/8mAITcNt710"],
+  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710","https://www.youtube.com/embed/Z1Yd7upQsXY"],
+  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY","https://www.youtube.com/embed/O6P86uwfdR0"],
+  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY","https://www.youtube.com/embed/mz-5yFfZ9g4","https://www.youtube.com/embed/H6T7XUCMwZk"],
+  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY","https://www.youtube.com/embed/7Zbtiid6iXI","https://www.youtube.com/embed/5I7o9eXwR0k"],
+  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4","https://www.youtube.com/embed/T1y0d3N6M0E","https://www.youtube.com/embed/7MRonzqYJgw"],
+  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg","https://www.youtube.com/embed/4v0mDLN2Pq0","https://www.youtube.com/embed/xp6hL2DcxKI"],
+  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ","https://www.youtube.com/embed/BVqQJYJXJuc"],
+  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU","https://www.youtube.com/embed/1Rdx02D0sAc"],
+  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"], // مثال، ممكن تبدله برابط صحيح
+  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"] // مثال، ممكن تبدله برابط صحيح
 };
 
 function showCourse(name) {
-  const video = courses[name];
-  document.getElementById("courseVideo").src = video + "?autoplay=1";
-  document.getElementById("videoContainer").style.display = "block";
+  const videoContainer = document.getElementById("videoContainer");
+  videoContainer.innerHTML = "";
+  const videos = courses[name];
+  videos.forEach(url => {
+    const iframe = document.createElement("iframe");
+    iframe.src = url + "?autoplay=0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    videoContainer.appendChild(iframe);
+  });
+  videoContainer.style.display = "flex";
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 </script>
