@@ -3,176 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JDX - مواقع تم صنعها بواسطه JDX</title>
+<title>JDX - خبراتي في المواقع</title>
 <style>
-/* خطوط */
+/* خطوط وألوان */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 body {
-    margin:0;
-    font-family:'Arial', sans-serif;
-    overflow-x:hidden;
-    background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
-    color:#fff;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg, #0d0d0d, #1a1a1a);
+  color: #fff;
+  overflow-x: hidden;
 }
+
 /* خلفية متحركة */
 .bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg,#1a1a1a,#0d0d0d,#1a1a1a,#0d0d0d);
-    background-size: 400% 400%;
-    animation: gradientBG 20s ease infinite;
-    z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #222222, #111111);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  z-index: -1;
 }
-@keyframes gradientBG{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+@keyframes gradientBG {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
-/* اسم الموقع */
-header{
-    text-align:center;
-    padding:50px 20px;
+
+/* الهيدر */
+header {
+  text-align: center;
+  padding: 50px 20px;
 }
-h1{
-    font-family:'Orbitron', sans-serif;
-    font-size:80px;
-    letter-spacing:3px;
-    background: linear-gradient(90deg,#00ffff,#ff00ff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation: glow 2s ease-in-out infinite alternate;
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 80px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite alternate;
 }
-@keyframes glow{
-    from{text-shadow:0 0 10px #00ffff,0 0 20px #ff00ff;}
-    to{text-shadow:0 0 20px #00ffff,0 0 40px #ff00ff;}
+@keyframes glow {
+  from {text-shadow: 0 0 10px #00ffff,0 0 20px #ff00ff;}
+  to {text-shadow: 0 0 20px #00ffff,0 0 40px #ff00ff;}
 }
-p{
-    font-size:20px;
-    max-width:800px;
-    margin:20px auto;
-    line-height:1.5;
-    text-align:center;
+p {
+  font-size: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
 }
-.btn{
-    display:inline-block;
-    margin:10px;
-    padding:15px 30px;
-    font-size:18px;
-    font-weight:bold;
-    color:#fff;
-    background:linear-gradient(45deg,#00ffff,#ff00ff);
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    text-decoration:none;
-    transition:0.3s;
+
+/* أزرار */
+.btn {
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg,#00ffff,#ff00ff);
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  text-decoration:none;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .btn:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 20px #00ffff,0 0 20px #ff00ff;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00ffff,0 0 20px #ff00ff;
 }
-/* أقسام */
-.section{
-    max-width:1000px;
-    margin:50px auto;
-    padding:20px;
+
+/* قسم المشاريع */
+.projects{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
 }
-.section h2{
-    font-family:'Orbitron', sans-serif;
-    font-size:40px;
-    text-align:center;
-    margin-bottom:30px;
-    background: linear-gradient(90deg,#ff7700,#77ff00,#00ffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.project-card{
+  border:2px solid #00ffff;
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  background: rgba(255,255,255,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-/* مواقع تم صنعها */
-.site-box{
-    border:2px solid #00ffff;
-    border-radius:15px;
-    padding:15px 20px;
-    margin:10px 0;
-    transition:0.3s;
+.project-card:hover{
+  transform: scale(1.05);
+  box-shadow:0 0 20px #00ffff,0 0 20px #ff00ff;
 }
-.site-box:hover{
-    transform:scale(1.02);
-    box-shadow:0 0 20px #00ffff,0 0 10px #ff00ff;
+.project-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
 }
-/* شهادات */
-.cert{
-    border:2px solid #ff00ff;
-    border-radius:15px;
-    padding:15px;
-    margin:10px 0;
-    text-align:center;
-    transition:0.3s;
+
+/* نصوص المشاريع */
+.project-card h3{
+  margin:10px 0;
+  font-size:18px;
+  font-weight:bold;
 }
-.cert:hover{
-    box-shadow:0 0 20px #ff00ff,0 0 20px #00ffff;
-}
-/* floating animation */
-.floating{
-    position:absolute;
-    border-radius:50%;
-    background:rgba(255,255,255,0.1);
-    animation: float 10s linear infinite;
-}
-@keyframes float{
-    0%{transform:translateY(0) rotate(0deg);}
-    50%{transform:translateY(-50px) rotate(180deg);}
-    100%{transform:translateY(0) rotate(360deg);}
+.project-card p{
+  font-size:14px;
+  color:#ccc;
 }
 </style>
 </head>
 <body>
 <div class="bg"></div>
+
 <header>
 <h1>JDX</h1>
-<p>أنا بصنع مواقع بجميع لغات البرمجة.<br>لدي شهادات معروفة وأستطيع صنع أي موقع بسرعة وسعر بسيط.</p>
+<p>خبرتي في تصميم وإنشاء المواقع الإلكترونية. أنشأت أكثر من 80 موقع مختلف، من المتاجر لصفحات Portfolio للمدونات والألعاب، وكل موقع فريد ومميز.</p>
 <a class="btn" href="https://wa.me/201505254534" target="_blank">تواصل عبر واتساب</a>
 </header>
 
-<div class="section">
-<h2>مواقع تم صنعها بواسطه JDX</h2>
-<div id="sites-container"></div>
-</div>
-
-<div class="section">
-<h2>الشهادات</h2>
-<div class="cert">شهادة W3Schools في HTML & CSS</div>
-<div class="cert">شهادة FreeCodeCamp في JavaScript</div>
-<div class="cert">شهادة Udemy في تطوير المواقع</div>
-<div class="cert">شهادة Google Web Developer</div>
-<div class="cert">شهادة Microsoft Front-End</div>
-</div>
+<section class="projects" id="projects">
+<!-- هنا المشاريع هتتحط -->
+</section>
 
 <script>
-// floating bubbles
-const colors=["#00ffff","#ff00ff","#ff7700","#77ff00","#00ff77"];
-for(let i=0;i<30;i++){
-    let div=document.createElement('div');
-    div.classList.add('floating');
-    div.style.width=div.style.height=Math.random()*50+20+'px';
-    div.style.left=Math.random()*window.innerWidth+'px';
-    div.style.top=Math.random()*window.innerHeight+'px';
-    div.style.background=colors[Math.floor(Math.random()*colors.length)]+'33';
-    div.style.animationDuration=(5+Math.random()*10)+'s';
-    document.body.appendChild(div);
-}
+// توليد 80 مشروع بأفكار مختلفة
+const projectsContainer = document.getElementById("projects");
+const projectIdeas = [
+"متجر إلكتروني للملابس","صفحة شخصية لمصمم جرافيك","لعبة أونلاين بسيطة","مدونة تقنية",
+"Portfolio لصور فوتوغرافية","موقع شركة تصميم داخلي","موقع مطعم أونلاين","منتدى للنقاش",
+"تعليم لغات برمجة","معرض سيارات","بيع تذاكر حفلات","صفحة شخصية لمؤلف كتب",
+"تطبيق توصيل طلبات","متجر إلكتروني للإكسسوارات","مدونة رياضية","Portfolio لمهندس معماري",
+"صفحة شخصية لموسيقي","متجر كتب إلكترونية","تعلم الطبخ أونلاين","معرض أعمال فنية",
+"موقع سيارات مستعملة","متجر إلكتروني للألعاب","Portfolio لمصور فوتوغرافي","مدونة أفلام",
+"صفحة شخصية لمبرمج","موقع خدمات توصيل","موقع تعليم أونلاين للأطفال","متجر إلكتروني للموبايلات",
+"Portfolio لفنان تشكيلي","صفحة شخصية لمؤثر سوشيال ميديا","موقع معرض أثاث","موقع بيع أدوات رياضية",
+"متجر أونلاين للمكملات الغذائية","Portfolio لمصمم واجهات","صفحة شخصية لمخرج أفلام","موقع أخبار تقنية",
+"موقع حجز رحلات","متجر إلكتروني للحقائب","Portfolio لمصور أزياء","مدونة سفر","موقع تعليم رسم",
+"صفحة شخصية لمدرب رياضي","متجر أونلاين للأحذية","Portfolio لمصمم داخلي","موقع شركة ناشئة",
+"موقع توصيل أغذية","متجر إلكتروني للهدايا","Portfolio لمصمم جرافيك ثلاثي الأبعاد","مدونة طهي",
+"صفحة شخصية لمبرمج ويب","موقع فعاليات","متجر أونلاين للإلكترونيات","Portfolio لمصور طبيعة",
+"مدونة قصص قصيرة","موقع صفحة شخصية لموسيقي","موقع تعليم لغات","متجر أونلاين للمعدات الرياضية",
+"Portfolio لفنان رقمي","صفحة شخصية لمصمم أزياء","موقع معرض سيارات كلاسيكي","موقع كتب إلكترونية",
+"متجر أونلاين للأدوات المنزلية","Portfolio لمصور حيوانات","مدونة تعليمية","صفحة شخصية لمبرمج تطبيقات",
+"موقع خدمات صحية","متجر أونلاين للكمبيوترات","Portfolio لمصمم جرافيك","مدونة أخبار فنية",
+"صفحة شخصية لمصور فوتوغرافي","موقع تعليم طبخ","متجر أونلاين للملابس الرياضية","Portfolio لمصور أزياء",
+"مدونة رياضية","صفحة شخصية لموسيقي","موقع معرض أثاث","موقع بيع كتب","متجر أونلاين للهدايا",
+"Portfolio لمصمم داخلي","مدونة طهي","صفحة شخصية لمبرمج","موقع فعاليات","متجر أونلاين للمعدات الرياضية",
+"Portfolio لفنان رقمي","صفحة شخصية لمصمم أزياء","موقع معرض سيارات كلاسيكي","موقع كتب إلكترونية",
+"متجر أونلاين للأدوات المنزلية","Portfolio لمصور حيوانات","مدونة تعليمية","صفحة شخصية لمبرمج تطبيقات"
+];
 
-// قائمة 100 موقع
-const sites=[];
-for(let i=1;i<=100;i++){
-    sites.push("موقع رقم "+i+" - صفحة شخصية/متجر/لعبة/مدونة/Portfolio");
+for(let i=0;i<80;i++){
+  const card = document.createElement('div');
+  card.classList.add('project-card');
+  card.innerHTML = `<img src="https://via.placeholder.com/250x150?text=Project+${i+1}" alt="Project ${i+1}">
+  <h3>موقع رقم ${i+1}</h3>
+  <p>${projectIdeas[i]}</p>
+  <p><em>مواقع تم صنعها بواسطة JDX</em></p>`;
+  projectsContainer.appendChild(card);
 }
-const container=document.getElementById('sites-container');
-sites.forEach(site=>{
-    const div=document.createElement('div');
-    div.className='site-box';
-    div.textContent=site;
-    container.appendChild(div);
-});
 </script>
+
 </body>
 </html>
