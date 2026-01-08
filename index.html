@@ -3,120 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JDX - صنع المواقع</title>
+<title>JDX - مواقع تم صنعها بواسطه JDX</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-    body {
-        margin:0; padding:0;
-        font-family: Arial,sans-serif;
-        background: linear-gradient(135deg,#0d0d0d,#1a1a1a);
-        color:#fff;
-    }
-    .bg {
-        position:fixed; width:100%; height:100%;
-        background: linear-gradient(45deg,#0d0d0d,#1a1a1a,#0d0d0d,#1a1a1a);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        z-index:-1;
-    }
-    @keyframes gradientBG {
-        0%{background-position:0% 50%;}
-        50%{background-position:100% 50%;}
-        100%{background-position:0% 50%;}
-    }
-    header{text-align:center;padding:40px 20px;}
-    h1 {
-        font-family: 'Orbitron',sans-serif;
-        font-size:80px;
-        background: linear-gradient(90deg,#00ffff,#ff00ff);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-        from{text-shadow:0 0 10px #00ffff,0 0 20px #ff00ff;}
-        to{text-shadow:0 0 20px #00ffff,0 0 40px #ff00ff;}
-    }
-    p{font-size:18px; max-width:700px; margin:15px auto; line-height:1.5;}
-    .btn{display:inline-block;margin:10px;padding:12px 25px;font-size:18px;font-weight:bold;color:#fff;background:linear-gradient(45deg,#00ffff,#ff00ff);border:none;border-radius:10px;text-decoration:none;cursor:pointer;transition:transform 0.3s, box-shadow 0.3s;}
-    .btn:hover{transform:scale(1.1);box-shadow:0 0 20px #00ffff,0 0 20px #ff00ff;}
-
-    section{padding:40px 20px; max-width:1000px; margin:auto;}
-    h2{font-size:36px;text-align:center;margin-bottom:30px;color:#0ff;}
-    ul{list-style:none;padding:0;}
-    li{margin:8px 0;padding:8px 12px;background:rgba(255,255,255,0.05);border-radius:8px;transition:0.3s;}
-    li:hover{background:rgba(255,0,255,0.2);}
+/* خطوط */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+body {
+    margin:0;
+    font-family:'Arial', sans-serif;
+    overflow-x:hidden;
+    background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
+    color:#fff;
+}
+/* خلفية متحركة */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,#1a1a1a,#0d0d0d,#1a1a1a,#0d0d0d);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    z-index: -1;
+}
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+/* اسم الموقع */
+header{
+    text-align:center;
+    padding:50px 20px;
+}
+h1{
+    font-family:'Orbitron', sans-serif;
+    font-size:80px;
+    letter-spacing:3px;
+    background: linear-gradient(90deg,#00ffff,#ff00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow{
+    from{text-shadow:0 0 10px #00ffff,0 0 20px #ff00ff;}
+    to{text-shadow:0 0 20px #00ffff,0 0 40px #ff00ff;}
+}
+p{
+    font-size:20px;
+    max-width:800px;
+    margin:20px auto;
+    line-height:1.5;
+    text-align:center;
+}
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:15px 30px;
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+    background:linear-gradient(45deg,#00ffff,#ff00ff);
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #00ffff,0 0 20px #ff00ff;
+}
+/* أقسام */
+.section{
+    max-width:1000px;
+    margin:50px auto;
+    padding:20px;
+}
+.section h2{
+    font-family:'Orbitron', sans-serif;
+    font-size:40px;
+    text-align:center;
+    margin-bottom:30px;
+    background: linear-gradient(90deg,#ff7700,#77ff00,#00ffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+/* مواقع تم صنعها */
+.site-box{
+    border:2px solid #00ffff;
+    border-radius:15px;
+    padding:15px 20px;
+    margin:10px 0;
+    transition:0.3s;
+}
+.site-box:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 20px #00ffff,0 0 10px #ff00ff;
+}
+/* شهادات */
+.cert{
+    border:2px solid #ff00ff;
+    border-radius:15px;
+    padding:15px;
+    margin:10px 0;
+    text-align:center;
+    transition:0.3s;
+}
+.cert:hover{
+    box-shadow:0 0 20px #ff00ff,0 0 20px #00ffff;
+}
+/* floating animation */
+.floating{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    animation: float 10s linear infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-50px) rotate(180deg);}
+    100%{transform:translateY(0) rotate(360deg);}
+}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-
 <header>
-    <h1>JDX</h1>
-    <p>🚀 عايز تعمل موقع لنفسك؟ أنا بصنع أي موقع HTML + CSS + JS جاهز للتسليم وبسعر بسيط جدًا! تصميم جذاب، صفحات تفاعلية، وتسليم سريع.</p>
-    <a class="btn" href="https://wa.me/201505254534" target="_blank">تواصل عبر واتساب</a>
+<h1>JDX</h1>
+<p>أنا بصنع مواقع بجميع لغات البرمجة.<br>لدي شهادات معروفة وأستطيع صنع أي موقع بسرعة وسعر بسيط.</p>
+<a class="btn" href="https://wa.me/201505254534" target="_blank">تواصل عبر واتساب</a>
 </header>
 
-<section>
-    <h2>💼 شهاداتي</h2>
-    <ul>
-        <li>Certified Web Developer - FreeCodeCamp</li>
-        <li>Responsive Web Design - Coursera</li>
-        <li>JavaScript Algorithms & Data Structures - FreeCodeCamp</li>
-        <li>Front-End Web Developer Nanodegree - Udacity</li>
-        <li>Full-Stack Web Development - The Odin Project</li>
-        <li>HTML5 & CSS3 Fundamentals - W3Schools</li>
-        <li>Google IT Automation with Python - Coursera</li>
-        <li>React JS Certification - Codecademy</li>
-    </ul>
-</section>
+<div class="section">
+<h2>مواقع تم صنعها بواسطه JDX</h2>
+<div id="sites-container"></div>
+</div>
 
-<section>
-    <h2>🌐 أمثلة على المواقع</h2>
-    <ul>
-        <li>صفحة شخصية بسيطة</li>
-        <li>موقع متجر إلكتروني</li>
-        <li>موقع لعبة صغيرة HTML5</li>
-        <li>Portfolio صور فوتوغرافية</li>
-        <li>مدونة تقنية</li>
-        <li>صفحة للمنتجات والخدمات</li>
-        <li>صفحة تسجيل دخول / تسجيل جديد</li>
-        <li>موقع عرض فيديوهات</li>
-        <li>موقع تعليم إلكتروني</li>
-        <li>موقع أخبار وتقارير</li>
-        <!-- ممكن تضيف باقي الأمثلة -->
-    </ul>
-</section>
-
-<section>
-    <h2>⚡ عروض للمبتدئين</h2>
-    <ul>
-        <li>أول 5 عملاء يحصلوا على تعديل مجاني بعد التسليم</li>
-        <li>أي موقع صفحة واحدة فقط بـ 50 جنيه لأول أسبوع</li>
-        <li>لو تجيب صديق يعمل موقع، خصم 10% على موقعك</li>
-    </ul>
-</section>
-
-<section>
-    <h2>📞 تواصل الآن</h2>
-    <a class="btn" href="https://wa.me/201505254534" target="_blank">واتساب</a>
-</section>
+<div class="section">
+<h2>الشهادات</h2>
+<div class="cert">شهادة W3Schools في HTML & CSS</div>
+<div class="cert">شهادة FreeCodeCamp في JavaScript</div>
+<div class="cert">شهادة Udemy في تطوير المواقع</div>
+<div class="cert">شهادة Google Web Developer</div>
+<div class="cert">شهادة Microsoft Front-End</div>
+</div>
 
 <script>
-    // خلفية عشوائية متحركة
-    const colors = ["#00ffff","#ff00ff","#ff7700","#77ff00","#00ff77"];
-    for(let i=0;i<30;i++){
-        let div=document.createElement('div');
-        div.style.position='absolute';
-        div.style.borderRadius='50%';
-        div.style.width=div.style.height=(Math.random()*50+20)+'px';
-        div.style.left=Math.random()*window.innerWidth+'px';
-        div.style.top=Math.random()*window.innerHeight+'px';
-        div.style.background=colors[Math.floor(Math.random()*colors.length)]+'33';
-        div.style.animation=`float ${5+Math.random()*10}s linear infinite`;
-        document.body.appendChild(div);
-    }
-</script>
+// floating bubbles
+const colors=["#00ffff","#ff00ff","#ff7700","#77ff00","#00ff77"];
+for(let i=0;i<30;i++){
+    let div=document.createElement('div');
+    div.classList.add('floating');
+    div.style.width=div.style.height=Math.random()*50+20+'px';
+    div.style.left=Math.random()*window.innerWidth+'px';
+    div.style.top=Math.random()*window.innerHeight+'px';
+    div.style.background=colors[Math.floor(Math.random()*colors.length)]+'33';
+    div.style.animationDuration=(5+Math.random()*10)+'s';
+    document.body.appendChild(div);
+}
 
+// قائمة 100 موقع
+const sites=[];
+for(let i=1;i<=100;i++){
+    sites.push("موقع رقم "+i+" - صفحة شخصية/متجر/لعبة/مدونة/Portfolio");
+}
+const container=document.getElementById('sites-container');
+sites.forEach(site=>{
+    const div=document.createElement('div');
+    div.className='site-box';
+    div.textContent=site;
+    container.appendChild(div);
+});
+</script>
 </body>
 </html>
