@@ -3,175 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>موقع كورسات آدم الكبير</title>
+<title>JDX</title>
 <style>
-/* عام */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-  background: linear-gradient(270deg,#8fd3f4,#84fab0,#8fd3f4);
-  background-size: 600% 600%;
-  animation: GradientBG 20s ease infinite;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
+    /* الخطوط والألوان */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(120deg, #1a1a1a, #0d0d0d);
+        color: #fff;
+    }
 
-/* عنوان الموقع */
-h1 {
-  margin: 30px 0;
-  text-align: center;
-  font-size: 2.5em;
-  text-shadow: 0 0 15px #0ff;
-}
+    /* خلفية متحركة */
+    .bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #1a1a1a, #0d0d0d, #1a1a1a, #0d0d0d);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        z-index: -1;
+    }
 
-/* حركة الخلفية */
-@keyframes GradientBG {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
+    @keyframes gradientBG {
+        0%{background-position:0% 50%;}
+        50%{background-position:100% 50%;}
+        100%{background-position:0% 50%;}
+    }
 
-/* أزرار الكورسات */
-.courses {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 40px;
-}
+    header {
+        text-align: center;
+        padding: 50px 20px;
+    }
 
-button.course-btn {
-  padding: 15px 25px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  background: linear-gradient(45deg,#ff6f61,#ff9a9e);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: 0.4s;
-}
+    h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 80px;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, #00ffff, #ff00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
 
-button.course-btn:hover {
-  transform: scale(1.08);
-  background: linear-gradient(45deg,#ff4757,#ff7b91);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
+    @keyframes glow {
+        from {text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;}
+        to {text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;}
+    }
 
-/* حاوية الفيديو */
-#videoContainer {
-  width: 90%;
-  max-width: 900px;
-  display: none;
-  margin-bottom: 40px;
-  justify-content: center;
-  align-items: center;
-}
+    p {
+        font-size: 20px;
+        max-width: 700px;
+        margin: 20px auto;
+        line-height: 1.5;
+        text-align: center;
+    }
 
-iframe {
-  width: 100%;
-  height: 500px;
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-  transition: 0.5s;
-}
+    .btn {
+        display: inline-block;
+        margin: 20px 10px;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(45deg, #00ffff, #ff00ff);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-/* فوتر */
-footer {
-  padding: 15px;
-  text-align: center;
-  font-size: 0.9em;
-  background: #111;
-  width: 100%;
-  box-shadow: 0 -2px 15px rgba(0,255,255,0.3);
-}
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px #00ffff, 0 0 20px #ff00ff;
+    }
 
-/* تأثير ظهور الفيديو */
-#videoContainer.show iframe {
-  animation: fadeIn 1s ease forwards;
-}
+    /* إضافات تفاعلية */
+    .floating {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        animation: float 10s linear infinite;
+    }
 
-@keyframes fadeIn {
-  0% {opacity: 0; transform: scale(0.9);}
-  100% {opacity: 1; transform: scale(1);}
-}
+    @keyframes float {
+        0% {transform: translateY(0) rotate(0deg);}
+        50% {transform: translateY(-50px) rotate(180deg);}
+        100% {transform: translateY(0) rotate(360deg);}
+    }
+
 </style>
 </head>
 <body>
+<div class="bg"></div>
 
-<h1>موقع كورسات آدم الكبير</h1>
+<header>
+    <h1>JDX</h1>
+    <p>
+        أنا بصنع مواقع بجميع لغات البرمجة.<br>
+        عندي شهادات ويمكنني صنع أي موقع في وقت قصير وبسعر بسيط جدًا.
+    </p>
+    <a class="btn" href="https://wa.me/201505254534" target="_blank">تواصل عبر واتساب</a>
+</header>
 
-<div class="courses">
-  <button class="course-btn" onclick="showCourse('C++')">كورسات C++</button>
-  <button class="course-btn" onclick="showCourse('CSS')">كورسات CSS</button>
-  <button class="course-btn" onclick="showCourse('HTML')">كورسات HTML</button>
-  <button class="course-btn" onclick="showCourse('JavaScript')">كورسات JavaScript</button>
-  <button class="course-btn" onclick="showCourse('تعلم البرمجة')">تعلم البرمجة</button>
-  <button class="course-btn" onclick="showCourse('مفهوم البرمجة')">مفهوم البرمجة</button>
-  <button class="course-btn" onclick="showCourse('ماهي البرمجة')">ماهي البرمجة</button>
-  <button class="course-btn" onclick="showCourse('الأمن السيبراني')">الأمن السيبراني</button>
-  <button class="course-btn" onclick="showCourse('الهكر الأخلاقي')">الهكر الأخلاقي</button>
-  <button class="course-btn" onclick="showCourse('Blender')">كورسات Blender</button>
-  <button class="course-btn" onclick="showCourse('مونتاج')">كورسات مونتاج</button>
-  <button class="course-btn" onclick="showCourse('كالي لينكس')">كورسات كالي لينكس</button>
-  <button class="course-btn" onclick="showCourse('مالتيجو')">أداة مالتيجو</button>
-  <button class="course-btn" onclick="showCourse('ويفتتح')">أداة ويفتتح</button>
-  <button class="course-btn" onclick="showCourse('تيرمينال')">ماهو التيرمينال</button>
-  <button class="course-btn" onclick="showCourse('شبكات')">تعلم الشبكات</button>
-  <button class="course-btn" onclick="showCourse('أوفيس')">كورسات أوفيس</button>
-  <button class="course-btn" onclick="showCourse('أنيميشن')">كورسات أنيميشن</button>
-  <button class="course-btn" onclick="showCourse('تصميم')">كورسات تصميم</button>
-  <button class="course-btn" onclick="showCourse('فيديو')">كورسات فيديو</button>
-</div>
-
-<div id="videoContainer"></div>
-
-<footer>تم صنع هذا الموقع بواسطة آدم رامي</footer>
-
+<!-- عناصر عشوائية للانيميشن -->
 <script>
-const courses = {
-  "C++": ["https://www.youtube.com/embed/vLnPwxZdW4Y"],
-  "CSS": ["https://www.youtube.com/embed/yfoY53QXEnI"],
-  "HTML": ["https://www.youtube.com/embed/pQN-pnXPaVg"],
-  "JavaScript": ["https://www.youtube.com/embed/hdI2bqOjy3c"],
-  "تعلم البرمجة": ["https://www.youtube.com/embed/O6P86uwfdR0"],
-  "مفهوم البرمجة": ["https://www.youtube.com/embed/8mAITcNt710"],
-  "ماهي البرمجة": ["https://www.youtube.com/embed/Z1Yd7upQsXY"],
-  "الأمن السيبراني": ["https://www.youtube.com/embed/1Q8fG0TtVAY"],
-  "الهكر الأخلاقي": ["https://www.youtube.com/embed/fZbUZhJv8nY"],
-  "Blender": ["https://www.youtube.com/embed/TPrnSACiTJ4"],
-  "مونتاج": ["https://www.youtube.com/embed/5XkLy_9lQXg"],
-  "كالي لينكس": ["https://www.youtube.com/embed/1WZfMZ3-lHQ"],
-  "مالتيجو": ["https://www.youtube.com/embed/ssnmOXA6fJU"],
-  "ويفتتح": ["https://www.youtube.com/embed/abcd1234"],
-  "تيرمينال": ["https://www.youtube.com/embed/xyz5678"],
-  "شبكات": ["https://www.youtube.com/embed/abc12345"],
-  "أوفيس": ["https://www.youtube.com/embed/def67890"],
-  "أنيميشن": ["https://www.youtube.com/embed/ghi23456"],
-  "تصميم": ["https://www.youtube.com/embed/jkl34567"],
-  "فيديو": ["https://www.youtube.com/embed/mno45678"]
-};
-
-function showCourse(name) {
-  const videoContainer = document.getElementById("videoContainer");
-  videoContainer.innerHTML = "";
-  const videoUrl = courses[name][0]; // فيديو واحد فقط لكل كورس
-  const iframe = document.createElement("iframe");
-  iframe.src = videoUrl + "?autoplay=1";
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-  iframe.allowFullscreen = true;
-  videoContainer.appendChild(iframe);
-  videoContainer.style.display = "flex";
-  videoContainer.classList.add("show");
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-}
+    const colors = ["#00ffff","#ff00ff","#ff7700","#77ff00","#00ff77"];
+    for(let i=0;i<30;i++){
+        let div = document.createElement('div');
+        div.classList.add('floating');
+        div.style.width = div.style.height = Math.random()*50 + 20 + 'px';
+        div.style.left = Math.random()*window.innerWidth + 'px';
+        div.style.top = Math.random()*window.innerHeight + 'px';
+        div.style.background = colors[Math.floor(Math.random()*colors.length)] + '33';
+        div.style.animationDuration = (5 + Math.random()*10) + 's';
+        document.body.appendChild(div);
+    }
 </script>
-
 </body>
 </html>
